@@ -1,0 +1,6 @@
+﻿  Sorting_Agorithms.cpp
+C:\Users\bulba\OneDrive\Pulpit\Sorting_Agorithms\Sorting_Agorithms.cpp(25,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\bulba\OneDrive\Pulpit\Sorting_Agorithms\Sorting_Agorithms.cpp(30,31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\bulba\OneDrive\Pulpit\Sorting_Agorithms\Sorting_Agorithms.cpp(45,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\bulba\OneDrive\Pulpit\Sorting_Agorithms\Sorting_Agorithms.cpp(47,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Sorting_Agorithms.vcxproj -> C:\Users\bulba\OneDrive\Pulpit\Sorting_Agorithms\Debug\Sorting_Agorithms.exe
