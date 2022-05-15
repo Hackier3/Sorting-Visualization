@@ -3,7 +3,7 @@
 
 using namespace std;
 
-/////////////////////////////////////                ctr + k + d	znajdowanie sciezki, gra
+/////////////////////////////////////    ctr + k + d	znajdowanie sciezki, gra	http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvc2019/index.php
 vector <int> sortuj_zliczajac(vector <int>&);
 vector <int> sortuj_wstawiajac(vector <int>&);
 vector <int> sortuj_wybierajac(vector <int>&);
@@ -40,9 +40,8 @@ vector <int> sortuj_zliczajac(vector <int>& vec)
 	vector <int> ileLiczb(najwieksza + 1);
 
 	//zeruje wartosc vectora zliczajacego ilosc wystapienia kolejnych liczb
-	for (int i = najmniejsza; i <= najwieksza; i++) {
+	for (int i = najmniejsza; i <= najwieksza; i++) 
 		ileLiczb.at(i) = 0;
-	}
 
 	//zliczam ilość wystąpień kolejnych liczby
 	for (int i = 0; i < vec.size(); i++)
