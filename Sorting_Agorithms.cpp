@@ -4,6 +4,7 @@
 using namespace std;
 
 /////////////////////////////////////    ctr + k + d	znajdowanie sciezki, gra	http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvc2019/index.php
+vector <int> sortuj_scalajac(vector <int>&);
 vector <int> sortuj_zliczajac(vector <int>&);
 vector <int> sortuj_wstawiajac(vector <int>&);
 vector <int> sortuj_wybierajac(vector <int>&);
@@ -16,13 +17,19 @@ int main()
 	vector <int> vec = { 4,5,4,6,2,1 };
 
 	drukuj(vec);
-	sortuj_zliczajac(vec);
+	sortuj_scalajac(vec);
 	drukuj(vec);
 
 	return 0;
 }
 
 ///////////////////////////////////////
+vector <int> sortuj_scalajac(vector <int>& vec)
+{
+	
+	return vec;    
+}
+
 vector <int> sortuj_zliczajac(vector <int>& vec)
 {
 	int najwieksza = vec.at(0);
@@ -36,11 +43,11 @@ vector <int> sortuj_zliczajac(vector <int>& vec)
 		if (vec.at(i) < najmniejsza)
 			najmniejsza = vec.at(i);
 	}
-	
+
 	vector <int> ileLiczb(najwieksza + 1);
 
 	//zeruje wartosc vectora zliczajacego ilosc wystapienia kolejnych liczb
-	for (int i = najmniejsza; i <= najwieksza; i++) 
+	for (int i = najmniejsza; i <= najwieksza; i++)
 		ileLiczb.at(i) = 0;
 
 	//zliczam ilość wystąpień kolejnych liczby
@@ -59,8 +66,8 @@ vector <int> sortuj_zliczajac(vector <int>& vec)
 vector <int> sortuj_wstawiajac(vector <int>& vec)
 {
 	for (int i = 1; i < vec.size(); i++)
-		for (int j = i - 1, k = i; 
-			j >= 0; 
+		for (int j = i - 1, k = i;
+			j >= 0;
 			j--, k--)
 			if (vec.at(k) < vec.at(j))
 				swap(vec.at(k), vec.at(j));
