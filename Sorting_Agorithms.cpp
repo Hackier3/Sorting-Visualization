@@ -27,7 +27,6 @@ int main()
 vector <int> sortuj_scalajac(vector <int>& vec)
 {
 	
-	return vec;    
 }
 
 vector <int> sortuj_zliczajac(vector <int>& vec)
