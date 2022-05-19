@@ -14,10 +14,10 @@ void drukuj(vector <int>);
 
 int main()
 {
-	vector <int> vec = { 4,5,4,6,2,1 };
+	vector <int> vec = { 6,5,4,3,2,1 };
 
 	drukuj(vec);
-	sortuj_scalajac(vec);
+	sortuj_babelkowo(vec);
 	drukuj(vec);
 
 	return 0;
@@ -26,7 +26,7 @@ int main()
 ///////////////////////////////////////
 vector <int> sortuj_scalajac(vector <int>& vec)
 {
-	
+	return vec;
 }
 
 vector <int> sortuj_zliczajac(vector <int>& vec)
@@ -93,11 +93,22 @@ vector <int> sortuj_wybierajac(vector <int>& vec)
 
 vector <int> sortuj_babelkowo(vector <int>& vec)
 {
-	for (int i = 0; i < vec.size(); i++)
-		for (int j = 0; j < vec.size() - 1; j++)
-			if (vec.at(j) > vec.at(j + 1))
-				swap(vec.at(j), vec.at(j + 1));
+	static int i = vec.size()+1;
 
+	if (i == 1)
+		return {};
+	else
+		i--;
+
+	for (int j = 0; j < i - 1; j++)
+		if (vec.at(j) > vec.at(j + 1))
+			swap(vec.at(j), vec.at(j + 1));
+
+	sortuj_babelkowo(vec);
+	if (i != vec.size()) {
+		cout << "xd  ";
+		i = vec.size();
+	}
 	return vec;
 }
 
