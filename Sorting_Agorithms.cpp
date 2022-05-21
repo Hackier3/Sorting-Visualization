@@ -4,11 +4,12 @@
 using namespace std;
 
 /////////////////////////////////////    ctr + k + d	znajdowanie sciezki, gra	http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvc2019/index.php
-vector <int> sortuj_scalajac(vector <int>&);
-vector <int> sortuj_zliczajac(vector <int>&);
-vector <int> sortuj_wstawiajac(vector <int>&);
-vector <int> sortuj_wybierajac(vector <int>&);
-vector <int> sortuj_babelkowo(vector <int>&);
+void scal(vector <int>& vec);
+void sortuj_scalajac(vector <int>&, int, int, int);
+void sortuj_zliczajac(vector <int>&, int, int, int);
+void sortuj_wstawiajac(vector <int>&);
+void sortuj_wybierajac(vector <int>&);
+void sortuj_babelkowo(vector <int>&);
 void drukuj(vector <int>);
 /////////////////////////////////////
 
@@ -24,12 +25,17 @@ int main()
 }
 
 ///////////////////////////////////////
-vector <int> sortuj_scalajac(vector <int>& vec)
+void sortuj_scalajac(vector <int>& vec, int lewa, int srodek, int prawa)
 {
-	return vec;
+
 }
 
-vector <int> sortuj_zliczajac(vector <int>& vec)
+void scal(vector <int>& vec)
+{
+
+}
+
+void sortuj_zliczajac(vector <int>& vec)
 {
 	int najwieksza = vec.at(0);
 	int najmniejsza = vec.at(0);
@@ -58,11 +64,9 @@ vector <int> sortuj_zliczajac(vector <int>& vec)
 			ileLiczb.at(i) > 0;
 			ileLiczb.at(i)--, licznik++)
 			vec.at(licznik) = i;
-
-	return vec;
 }
 
-vector <int> sortuj_wstawiajac(vector <int>& vec)
+void sortuj_wstawiajac(vector <int>& vec)
 {
 	for (int i = 1; i < vec.size(); i++)
 		for (int j = i - 1, k = i;
@@ -70,11 +74,9 @@ vector <int> sortuj_wstawiajac(vector <int>& vec)
 			j--, k--)
 			if (vec.at(k) < vec.at(j))
 				swap(vec.at(k), vec.at(j));
-
-	return vec;
 }
 
-vector <int> sortuj_wybierajac(vector <int>& vec)
+void sortuj_wybierajac(vector <int>& vec)
 {
 	for (int i = 0; i < vec.size(); i++)
 	{
@@ -87,29 +89,25 @@ vector <int> sortuj_wybierajac(vector <int>& vec)
 		if (vec.at(i) != vec.at(indexMin))
 			swap(vec.at(i), vec.at(indexMin));
 	}
-
-	return vec;
 }
 
-vector <int> sortuj_babelkowo(vector <int>& vec)
+//REKURENCYJNIE
+void sortuj_babelkowo(vector <int>& vec)
 {
-	static int i = vec.size()+1;
-
-	if (i == 1)
-		return {};
-	else
-		i--;
+	static int i = vec.size();
 
 	for (int j = 0; j < i - 1; j++)
 		if (vec.at(j) > vec.at(j + 1))
 			swap(vec.at(j), vec.at(j + 1));
 
-	sortuj_babelkowo(vec);
-	if (i != vec.size()) {
-		cout << "xd  ";
+	if (i != 1)
+	{
+		i--;	sortuj_babelkowo(vec);
+	
+}
+		
+	if (i != vec.size())
 		i = vec.size();
-	}
-	return vec;
 }
 
 void drukuj(vector <int> vec)
