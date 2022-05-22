@@ -5,7 +5,7 @@ using namespace std;
 
 /////////////////////////////////////    ctr + k + d	znajdowanie sciezki, gra	http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvc2019/index.php
 void scal(vector <int>&, int, int, int);
-void sortuj_scalajac(vector <int>&, int, int);
+void sortuj_scalajac(vector <int>&, int, int); //nie potrafie dodac wartosci domyslnych argumentow, tak aby jedynym argumentem byl vector z nieposortowanymi elementami. Gdy deklaruje prawa = vec.size() - 1 wyświetla się błąd
 void sortuj_zliczajac(vector <int>&, int, int, int);
 void sortuj_wstawiajac(vector <int>&);
 void sortuj_wybierajac(vector <int>&);
@@ -53,10 +53,12 @@ void scal(vector <int>& vec, int lewa, int srodek, int prawa)
 	for (int i = 0; i < rozmP; i++)
 		vecP.at(i) = vec.at(i + srodek + 1);
 
+	//deklaruje wskazniki do pomocniczych tablic, aby moc porownywac w nich elementy
 	int wskaznikL = 0;
 	int wskaznikP = 0;
 	int indexVec;
 	
+	//porownuje elementy z pomocniczych vetorow, aby pomosrtowac glowny vector
 	for (indexVec = lewa; wskaznikL < rozmL && wskaznikP < rozmP; indexVec++)
 	{
 		if (vecL[wskaznikL] <= vecP[wskaznikP])
@@ -65,13 +67,10 @@ void scal(vector <int>& vec, int lewa, int srodek, int prawa)
 			vec[indexVec] = vecP[wskaznikP++];
 	}
 
-	//Jeśli w tablicy tabL pozostały jeszcze jakieś elementy
-	//kopiujemy je
+	//przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
 	while (wskaznikL < rozmL)
 		vec[indexVec++] = vecL[wskaznikL++];
 
-	//Jeśli w tablicy tabR pozostały jeszcze jakieś elementy
-	//kopiujemy je
 	while (wskaznikP < rozmP)
 		vec[indexVec++] = vecP[wskaznikP++];
 }
