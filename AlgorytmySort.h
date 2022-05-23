@@ -13,4 +13,4 @@ class AlgorytmySort
 		void sortuj_wybierajac(vector <int>&);
 		void sortuj_babelkowo(vector <int>&);
 		void drukuj(vector <int>);
-}
+};

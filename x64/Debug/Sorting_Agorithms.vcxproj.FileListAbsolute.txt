@@ -1,3 +1,3 @@
 C:\Users\bulba\OneDrive\Pulpit\SortingAgorithms\x64\Debug\Sorting_Agorithms.exe
 C:\Users\bulba\OneDrive\Pulpit\SortingAlgorithms\x64\Debug\Sorting_Agorithms.exe
-E:\szkolda\SortingAlgorithms\x64\Debug\Sorting_Agorithms.exe
+E:\szkolda\SortingAlgorithms\x64\Debug\SortVisualizer.exe
