@@ -24,6 +24,7 @@
     <ProjectGuid>{e9d3b4f6-cf6b-42a3-abed-51426a5c4824}</ProjectGuid>
     <RootNamespace>SortingAgorithms</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SortVisualizer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -145,7 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sorting_Agorithms.cpp" />
+    <ClCompile Include="SortVisualizer.cpp" />
+    <ClCompile Include="AlgorytmySort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlgorytmySort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
