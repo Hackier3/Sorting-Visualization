@@ -29,13 +29,13 @@ int main()
 
 	/// ////////////////////
 
-	AlgorytmySort doPosortowania;
+	SortAlgorithms toSort;
 
 	vector <int> vec = { 6,5,4,3,2,1 };
 
-	doPosortowania.drukuj(vec);
-	doPosortowania.sortuj_scalajac(vec, 0, vec.size() - 1);
-	doPosortowania.drukuj(vec);
+	toSort.printData(vec);
+	toSort.merge_sort(vec, 0, vec.size() - 1);
+	toSort.printData(vec);
 
 	return 0;
 }

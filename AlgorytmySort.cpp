@@ -3,88 +3,88 @@
 
 using namespace std;
 
-void AlgorytmySort::sortuj_scalajac(vector <int>& vec, int lewa, int prawa)
+void SortAlgorithms::merge_sort(vector <int>& vec, int left, int right)
 {
-	if (lewa != prawa)
+	if (left != right)
 	{
-		int srodek = (prawa + lewa) / 2;
-		sortuj_scalajac(vec, lewa, srodek);
-		sortuj_scalajac(vec, srodek + 1, prawa);
-		scal(vec, lewa, srodek, prawa);
+		int mid = (right + left) / 2;
+		merge_sort(vec, left, mid);
+		merge_sort(vec, mid + 1, right);
+		merge(vec, left, mid, right);
 	}
 }
 
-void AlgorytmySort::scal(vector <int>& vec, int lewa, int srodek, int prawa)
+void SortAlgorithms::merge(vector <int>& vec, int left, int mid, int right)
 {
 	//deklaruje rozmiar ka¿dego z podvectorow
-	int rozmL = srodek - lewa + 1;
-	int rozmP = prawa - srodek;
+	int sizeL = mid - left + 1;
+	int sizeR = right - mid;
 
 	//deklaruje vectory pomocniecze dla lewej oraz prawej strony
-	vector <int> vecL(rozmL);
-	vector <int> vecP(rozmP);
+	vector <int> vecL(sizeL);
+	vector <int> vecP(sizeR);
 
 	//przypisuje wartosc vectorom pomocniczym
-	for (int i = 0; i < rozmL; i++)
-		vecL.at(i) = vec.at(i + lewa);
+	for (int i = 0; i < sizeL; i++)
+		vecL.at(i) = vec.at(i + left);
 
-	for (int i = 0; i < rozmP; i++)
-		vecP.at(i) = vec.at(i + srodek + 1);
+	for (int i = 0; i < sizeR; i++)
+		vecP.at(i) = vec.at(i + mid + 1);
 
 	//deklaruje wskazniki do pomocniczych tablic, aby moc porownywac w nich elementy
-	int wskaznikL = 0;
-	int wskaznikP = 0;
+	int indicatorL = 0;
+	int indicatorR = 0;
 	int indexVec;
 
 	//porownuje elementy z pomocniczych vetorow, aby pomosrtowac glowny vector
-	for (indexVec = lewa; wskaznikL < rozmL && wskaznikP < rozmP; indexVec++)
+	for (indexVec = left; indicatorL < sizeL && indicatorR < sizeR; indexVec++)
 	{
-		if (vecL[wskaznikL] <= vecP[wskaznikP])
-			vec[indexVec] = vecL[wskaznikL++];
+		if (vecL[indicatorL] <= vecP[indicatorR])
+			vec[indexVec] = vecL[indicatorL++];
 		else
-			vec[indexVec] = vecP[wskaznikP++];
+			vec[indexVec] = vecP[indicatorR++];
 	}
 
 	//przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
-	while (wskaznikL < rozmL)
-		vec[indexVec++] = vecL[wskaznikL++];
+	while (indicatorL < sizeL)
+		vec[indexVec++] = vecL[indicatorL++];
 
-	while (wskaznikP < rozmP)
-		vec[indexVec++] = vecP[wskaznikP++];
+	while (indicatorR < sizeR)
+		vec[indexVec++] = vecP[indicatorR++];
 }
 
-void AlgorytmySort::sortuj_zliczajac(vector <int>& vec)
+void SortAlgorithms::counting_sort(vector <int>& vec)
 {
-	int najwieksza = vec.at(0);
-	int najmniejsza = vec.at(0);
+	int theBiggest = vec.at(0);
+	int theSmallest = vec.at(0);
 
 	//szukam najmniejszej oraz najwiekszej liczby ze zbioru liczb do posortowania
 	for (int i = 0; i < vec.size(); i++)
 	{
-		if (vec.at(i) > najwieksza)
-			najwieksza = vec.at(i);
-		if (vec.at(i) < najmniejsza)
-			najmniejsza = vec.at(i);
+		if (vec.at(i) > theBiggest)
+			theBiggest = vec.at(i);
+		if (vec.at(i) < theSmallest)
+			theSmallest = vec.at(i);
 	}
 
-	vector <int> ileLiczb(najwieksza + 1);
+	vector <int> howManyNumbs(theBiggest + 1);
 
 	//zeruje wartosc vectora zliczajacego ilosc wystapienia kolejnych liczb
-	for (int i = najmniejsza; i <= najwieksza; i++)
-		ileLiczb.at(i) = 0;
+	for (int i = theSmallest; i <= theBiggest; i++)
+		howManyNumbs.at(i) = 0;
 
 	//zliczam iloœæ wyst¹pieñ kolejnych liczby
 	for (int i = 0; i < vec.size(); i++)
-		ileLiczb.at(vec.at(i))++;
+		howManyNumbs.at(vec.at(i))++;
 
-	for (int i = najmniejsza; i <= najwieksza; i++)
-		for (static int licznik = 0;
-			ileLiczb.at(i) > 0;
-			ileLiczb.at(i)--, licznik++)
-			vec.at(licznik) = i;
+	for (int i = theSmallest; i <= theBiggest; i++)
+		for (static int counter = 0;
+			howManyNumbs.at(i) > 0;
+			howManyNumbs.at(i)--, counter++)
+			vec.at(counter) = i;
 }
 
-void AlgorytmySort::sortuj_wstawiajac(vector <int>& vec)
+void SortAlgorithms::insertion_sort(vector <int>& vec)
 {
 	for (int i = 1; i < vec.size(); i++)
 		for (int j = i - 1, k = i;
@@ -94,7 +94,7 @@ void AlgorytmySort::sortuj_wstawiajac(vector <int>& vec)
 				swap(vec.at(k), vec.at(j));
 }
 
-void AlgorytmySort::sortuj_wybierajac(vector <int>& vec)
+void SortAlgorithms::select_sort(vector <int>& vec)
 {
 	for (int i = 0; i < vec.size(); i++)
 	{
@@ -110,7 +110,7 @@ void AlgorytmySort::sortuj_wybierajac(vector <int>& vec)
 }
 
 //REKURENCYJNIE
-void AlgorytmySort::sortuj_babelkowo(vector <int>& vec)
+void SortAlgorithms::bubble_sort(vector <int>& vec)
 {
 	static int i = vec.size();
 
@@ -121,14 +121,14 @@ void AlgorytmySort::sortuj_babelkowo(vector <int>& vec)
 	if (i != 1)
 	{
 		i--;
-		sortuj_babelkowo(vec);
+		bubble_sort(vec);
 	}
 
 	if (i != vec.size())
 		i = vec.size();
 }
 
-void AlgorytmySort::drukuj(vector <int> vec)
+void SortAlgorithms::printData(vector <int> vec)
 {
 	for (auto elem : vec) {
 		cout << elem << " ";

@@ -1,9 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
-  SortVisualizer.cpp
-E:\szkolda\Sorting-Visualization\SortVisualizer.cpp(28,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
-E:\szkolda\Sorting-Visualization\SortVisualizer.cpp(37,55): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
   AlgorytmySort.cpp
 E:\szkolda\Sorting-Visualization\AlgorytmySort.cpp(115,27): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
 E:\szkolda\Sorting-Visualization\AlgorytmySort.cpp(128,17): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
+  SortVisualizer.cpp
+E:\szkolda\Sorting-Visualization\SortVisualizer.cpp(28,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
+E:\szkolda\Sorting-Visualization\SortVisualizer.cpp(37,42): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
   Generowanie kodu...
   Sorting_Agorithms.vcxproj -> E:\szkolda\Sorting-Visualization\x64\Debug\SortVisualizer.exe
