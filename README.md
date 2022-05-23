@@ -1,1 +1,1 @@
-# Sorting_Agorithms
+# Wizualizacja danych w algorytmach sortujących
