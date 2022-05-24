@@ -16,27 +16,27 @@ void SortAlgorithms::merge_sort(vector <int>& vec, int left, int right)
 
 void SortAlgorithms::merge(vector <int>& vec, int left, int mid, int right)
 {
-	//deklaruje rozmiar ka¿dego z podvectorow
+	// Deklaruje rozmiar ka¿dego z podvectorow
 	int sizeL = mid - left + 1;
 	int sizeR = right - mid;
 
-	//deklaruje vectory pomocniecze dla lewej oraz prawej strony
+	// Deklaruje vectory pomocniecze dla lewej oraz prawej strony
 	vector <int> vecL(sizeL);
 	vector <int> vecP(sizeR);
 
-	//przypisuje wartosc vectorom pomocniczym
+	// Przypisuje wartosc vectorom pomocniczym
 	for (int i = 0; i < sizeL; i++)
 		vecL.at(i) = vec.at(i + left);
 
 	for (int i = 0; i < sizeR; i++)
 		vecP.at(i) = vec.at(i + mid + 1);
 
-	//deklaruje wskazniki do pomocniczych tablic, aby moc porownywac w nich elementy
+	// Deklaruje wskazniki do pomocniczych tablic, aby moc porownywac w nich elementy
 	int indicatorL = 0;
 	int indicatorR = 0;
 	int indexVec;
 
-	//porownuje elementy z pomocniczych vetorow, aby pomosrtowac glowny vector
+	// Porownuje elementy z pomocniczych vetorow, aby pomosrtowac glowny vector
 	for (indexVec = left; indicatorL < sizeL && indicatorR < sizeR; indexVec++)
 	{
 		if (vecL[indicatorL] <= vecP[indicatorR])
@@ -45,7 +45,7 @@ void SortAlgorithms::merge(vector <int>& vec, int left, int mid, int right)
 			vec[indexVec] = vecP[indicatorR++];
 	}
 
-	//przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
+	// Przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
 	while (indicatorL < sizeL)
 		vec[indexVec++] = vecL[indicatorL++];
 
@@ -58,7 +58,7 @@ void SortAlgorithms::counting_sort(vector <int>& vec)
 	int theBiggest = vec.at(0);
 	int theSmallest = vec.at(0);
 
-	//szukam najmniejszej oraz najwiekszej liczby ze zbioru liczb do posortowania
+	// Szukam najmniejszej oraz najwiekszej liczby ze zbioru liczb do posortowania
 	for (int i = 0; i < vec.size(); i++)
 	{
 		if (vec.at(i) > theBiggest)
@@ -69,11 +69,11 @@ void SortAlgorithms::counting_sort(vector <int>& vec)
 
 	vector <int> howManyNumbs(theBiggest + 1);
 
-	//zeruje wartosc vectora zliczajacego ilosc wystapienia kolejnych liczb
+	// Zeruje wartosc vectora zliczajacego ilosc wystapienia kolejnych liczb
 	for (int i = theSmallest; i <= theBiggest; i++)
 		howManyNumbs.at(i) = 0;
 
-	//zliczam iloœæ wyst¹pieñ kolejnych liczby
+	// Zliczam iloœæ wyst¹pieñ kolejnych liczby
 	for (int i = 0; i < vec.size(); i++)
 		howManyNumbs.at(vec.at(i))++;
 
