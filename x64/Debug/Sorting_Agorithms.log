@@ -1,4 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
-  SortVisualizer.cpp
-E:\szkolda\Sorting-Visualization\SortVisualizer.cpp(54,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
+  Main.cpp
+E:\szkolda\Sorting-Visualization\Main.cpp(28,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
   Sorting_Agorithms.vcxproj -> E:\szkolda\Sorting-Visualization\x64\Debug\SortVisualizer.exe
