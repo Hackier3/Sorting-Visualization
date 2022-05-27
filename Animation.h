@@ -21,6 +21,16 @@ class Animation
 		const int numberOfPillars = 100;
 
 		vector<pair<int, int>> arr = vector<pair<int,int>>(numberOfPillars);
+		const char* algorithmsNames[10] = { "Bubble sort",
+											"Select sort",
+											"Insertion sort",
+											"Counting sort",
+											"Merge sort",
+											"Costam sort",
+											"Costam sort",
+											"Costam sort",
+											"Costam sort",
+											"Costam sort" };
 
 		//void sortArray();
 		void drawArray(vector<pair<int, int>>);
@@ -28,4 +38,5 @@ class Animation
 		void showMenuScreen();
 
 		Color findColorForPillar(int pillarState);
+
 };
