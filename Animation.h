@@ -36,6 +36,7 @@ class Animation
 		void drawArray(vector<pair<int, int>>);
 		void randomizeArray(vector<pair<int, int>>&);
 		void showMenuScreen();
+		void IsAnyKeyPressed();
 
 		Color findColorForPillar(int pillarState);
 

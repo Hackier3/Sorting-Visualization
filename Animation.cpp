@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include "Animation.h"
 #include <string>
+#include <conio.h>
 
 // Pillar colors
 #define NORMAL 0
@@ -73,7 +74,10 @@ void Animation::showMenuScreen()
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
 	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
 
-	//drawArray(arr);
+	// Action before pressed key
+	IsAnyKeyPressed();
+
+	drawArray(arr);
 }
 
 // Funkcja aktualizujaca kolory pilarow
@@ -92,5 +96,15 @@ Color Animation::findColorForPillar(int pillarState)
 	default:
 		return MAGENTA;
 		break;
+	}
+}
+
+void Animation::IsAnyKeyPressed()
+{
+	static bool keyPressed = false;
+
+	while (!IsKeyReleased)
+	{
+		system("pause");
 	}
 }

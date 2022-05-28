@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include "Sorts.h"
 #include "Animation.h"
+#include <string>
 
 using namespace std;
 
