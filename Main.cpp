@@ -22,6 +22,9 @@ int main()
 		if (o.isShowMenuScreen)
 			o.showMenuScreen();
 
+		if(o.isMexuExit)
+			o.drawArray(o.arr);
+
 		BeginDrawing();
 		ClearBackground(BLACK);
 		EndDrawing();

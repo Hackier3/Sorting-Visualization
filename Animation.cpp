@@ -1,8 +1,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "Animation.h"
-#include <string>
-#include <conio.h>
+#include "Sorts.h"
 
 // Pillar colors
 #define NORMAL 0
@@ -46,7 +45,7 @@ void Animation::showMenuScreen()
 	Font fontRegular = LoadFont("");
 	int posY = 80;
 	int fontSize = 40;
-	const char* headerName = "Select a sorting algorithm: 0-9";
+	const char* headerName = "Select a sorting algorithm: type 0-9";
 
 	// Tekst g³owny
 	int textWidth = MeasureTextEx(fontRegular, headerName, fontSize, fontSize / 10).x;
@@ -74,10 +73,10 @@ void Animation::showMenuScreen()
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
 	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
 
-	// Action before pressed key
-	IsAnyKeyPressed();
 
-	drawArray(arr);
+	// Action before pressed key
+	IsNumberPressed();
+
 }
 
 // Funkcja aktualizujaca kolory pilarow
@@ -99,12 +98,27 @@ Color Animation::findColorForPillar(int pillarState)
 	}
 }
 
-void Animation::IsAnyKeyPressed()
+void Animation::IsNumberPressed()
 {
-	static bool keyPressed = false;
+	int key = GetCharPressed();
 
-	while (!IsKeyReleased)
+	if (key >= 48 && key <= 57) 
 	{
-		system("pause");
+		Sorts o;
+		switch (key)
+		{
+			case 48:
+				o.bubble_sort(&arr);
+				break;
+			case 49:
+				cout << "1";
+				system("pause");
+				break;
+			case 50:
+				cout << "2";
+				system("pause");
+				break;
+		}
+		isMexuExit = !isMexuExit;
 	}
 }
