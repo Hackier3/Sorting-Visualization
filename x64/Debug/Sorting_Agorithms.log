@@ -1,13 +1,12 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
   Animation.cpp
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,76): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,16): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,81): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,62): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,86): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,71): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,52): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,76): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(111,23): error C2664: „void Sorts::bubble_sort(std::vector<int,std::allocator<int>> &)”: nie można dokonać konwersji argumentu 1 z „std::vector<std::pair<int,int>,std::allocator<std::pair<int,int>>> *” do „std::vector<int,std::allocator<int>> &”
-E:\szkolda\Sorting-Visualization\Sorts.h(14,8): message : zobacz deklarację „Sorts::bubble_sort”
+E:\szkolda\Sorting-Visualization\Animation.cpp(53,76): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(53,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(53,16): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(61,81): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(61,62): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(61,86): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(75,71): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(75,52): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Animation.cpp(75,76): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+  Sorting_Agorithms.vcxproj -> E:\szkolda\Sorting-Visualization\x64\Debug\SortVisualizer.exe

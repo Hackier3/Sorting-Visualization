@@ -15,7 +15,6 @@ class Animation
 		// Specyfikacje boolowskie
 		bool isRandomizeArray = true;
 		bool isShowMenuScreen = true;
-		bool isMexuExit = false;
 
 		// Pozosta³e specyfikacje
 		const int FPS = 120;
@@ -34,11 +33,12 @@ class Animation
 											"Costam sort" };
 
 		//void sortArray();
-		void drawArray(vector<pair<int, int>>);
+		void drawArray(vector<pair<int, int>>&);
 		void randomizeArray(vector<pair<int, int>>&);
 		void showMenuScreen();
-		void IsNumberPressed();
+		void isNumberPressed();
+		void displayAnimation(vector<pair<int, int>>&);
 
-		Color findColorForPillar(int pillarState);
+		// Color findColorForPillar(int pillarState);
 
 };

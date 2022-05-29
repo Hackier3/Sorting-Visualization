@@ -19,14 +19,15 @@ int main()
 		if (o.isRandomizeArray)
 			o.randomizeArray(o.arr);
 
+		BeginDrawing();
+		ClearBackground(BLACK);
+
 		if (o.isShowMenuScreen)
 			o.showMenuScreen();
 
-		if(o.isMexuExit)
-			o.drawArray(o.arr);
+		if (!o.isShowMenuScreen)
+			o.isNumberPressed();
 
-		BeginDrawing();
-		ClearBackground(BLACK);
 		EndDrawing();
 	}
 	CloseWindow;

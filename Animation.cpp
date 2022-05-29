@@ -11,7 +11,7 @@
 using namespace std;
 
 // Funkcja wizualizujaca kolejne wartosci w tablicy
-void Animation::drawArray(vector<pair<int, int>> arr)
+void Animation::drawArray(vector<pair<int, int>>& arr)
 {
 	int frame = 0;
 	const int frameWidth = 2;
@@ -21,12 +21,14 @@ void Animation::drawArray(vector<pair<int, int>> arr)
 		i < numberOfPillars;
 		i++, frame += frameWidth)
 	{
-		Color color = findColorForPillar(arr[i].second);
+		// Color color = findColorForPillar(arr[i].second);
 
 		// Podaje ( { wspX skad mam zaczynac rysowac, wspY skad mam zaczac rysowac }, { podaje szerokosc slupka, a tu wysokosc }, { kolor } )
 		DrawRectangleV(Vector2{ (float)i * BarWidth + frame, (float)GetScreenHeight() - arr[i].first },
 			Vector2{ BarWidth, (float)arr[i].first },
-			color);
+			// color,
+			BLUE
+		);
 	}
 }
 
@@ -73,32 +75,29 @@ void Animation::showMenuScreen()
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
 	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
 
-
-	// Action before pressed key
-	IsNumberPressed();
-
+	isNumberPressed();
 }
 
 // Funkcja aktualizujaca kolory pilarow
-Color Animation::findColorForPillar(int pillarState)
-{
-	switch (pillarState)
-	{
-	case SELECTED:
-		return LIGHTGRAY;
-		break;
+//Color Animation::findColorForPillar(int pillarState)
+//{
+//	switch (pillarState)
+//	{
+//	case SELECTED:
+//		return LIGHTGRAY;
+//		break;
+//
+//	case SORTED:
+//		return GREEN;
+//		break;
+//
+//	default:
+//		return MAGENTA;
+//		break;
+//	}
+//}
 
-	case SORTED:
-		return GREEN;
-		break;
-
-	default:
-		return MAGENTA;
-		break;
-	}
-}
-
-void Animation::IsNumberPressed()
+void Animation::isNumberPressed()
 {
 	int key = GetCharPressed();
 
@@ -108,7 +107,7 @@ void Animation::IsNumberPressed()
 		switch (key)
 		{
 			case 48:
-				o.bubble_sort(&arr);
+				o.bubble_sort(arr);
 				break;
 			case 49:
 				cout << "1";
@@ -119,6 +118,13 @@ void Animation::IsNumberPressed()
 				system("pause");
 				break;
 		}
-		isMexuExit = !isMexuExit;
+		isRandomizeArray = !isRandomizeArray;
 	}
+}
+
+void Animation::displayAnimation(vector<pair<int, int>>& vec){
+		BeginDrawing();
+		ClearBackground(BLACK);
+		drawArray(vec);
+		EndDrawing();
 }

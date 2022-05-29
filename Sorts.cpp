@@ -1,7 +1,11 @@
 #include <iostream>
 #include "Sorts.h"
+#include "Animation.h"
+#include <raylib.h>
 
 using namespace std;
+
+Animation o;
 
 void Sorts::merge_sort(vector <int>& vec, int left, int right)
 {
@@ -110,13 +114,16 @@ void Sorts::select_sort(vector <int>& vec)
 }
 
 //REKURENCYJNIE
-void Sorts::bubble_sort(vector <int>& vec)
+void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 {
 	static int i = vec.size();
 
 	for (int j = 0; j < i - 1; j++)
 		if (vec.at(j) > vec.at(j + 1))
+		{
 			swap(vec.at(j), vec.at(j + 1));
+			o.displayAnimation(vec);
+		}
 
 	if (i != 1)
 	{

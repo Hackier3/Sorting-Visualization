@@ -11,6 +11,6 @@ class Sorts
 		void counting_sort(vector <int>&);
 		void insertion_sort(vector <int>&);
 		void select_sort(vector <int>&);
-		void bubble_sort(vector <int>&);
+		void bubble_sort(vector<pair<int, int>>&);
 		void printData(vector <int>);
 };
