@@ -89,12 +89,12 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 		howManyNumbs.at(vec.at(i).first)++;
 
 	for (int i = theSmallest; i <= theBiggest; i++)
-		while(howManyNumbs.at(i) > 0)
+		while (howManyNumbs.at(i) > 0)
 		{
 			vec.at(counter).first = i;
 			o.displayAnimation(vec);
 
-			howManyNumbs.at(i)--; 
+			howManyNumbs.at(i)--;
 			counter++;
 		}
 	counter = 0;

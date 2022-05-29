@@ -81,17 +81,17 @@ Color Animation::findColorForPillar(int pillarState)
 {
 	switch (pillarState)
 	{
-		case SELECTED:
-			return LIGHTGRAY;
-			break;
+	case SELECTED:
+		return LIGHTGRAY;
+		break;
 
-		case SORTED:
-			return GREEN;
-			break;
+	case SORTED:
+		return GREEN;
+		break;
 
-		default:
-			return MAGENTA;
-			break;
+	default:
+		return MAGENTA;
+		break;
 	}
 }
 
@@ -99,26 +99,26 @@ void Animation::isNumberPressed()
 {
 	int key = GetCharPressed();
 
-	if (key >= 48 && key <= 57) 
+	if (key >= 48 && key <= 57)
 	{
 		Sorts o;
 		switch (key)
 		{
-			case 48:
-				o.bubble_sort(arr);
-				break;
-			case 49:
-				o.select_sort(arr);
-				break;
-			case 50:
-				o.insertion_sort(arr);
-				break;
-			case 51:
-				o.counting_sort(arr);
-				break;
-			case 52:
-				o.merge_sort(arr, 0 , numberOfPillars - 1);
-				break;
+		case 48:
+			o.bubble_sort(arr);
+			break;
+		case 49:
+			o.select_sort(arr);
+			break;
+		case 50:
+			o.insertion_sort(arr);
+			break;
+		case 51:
+			o.counting_sort(arr);
+			break;
+		case 52:
+			o.merge_sort(arr, 0, numberOfPillars - 1);
+			break;
 		}
 		isRandomizeArray = !isRandomizeArray;
 		//isShowMenuScreen = !isShowMenuScreen;
@@ -128,8 +128,8 @@ void Animation::isNumberPressed()
 
 void Animation::displayAnimation(vector<pair<int, int>>vec)
 {
-		BeginDrawing();
-		ClearBackground(BLACK);
-		drawArray(vec);
-		EndDrawing();
+	BeginDrawing();
+	ClearBackground(BLACK);
+	drawArray(vec);
+	EndDrawing();
 }

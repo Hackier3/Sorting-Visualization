@@ -1,20 +1,7 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
-  Animation.cpp
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,76): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(51,16): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,81): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,62): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(59,86): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,71): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,52): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(73,76): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-  Main.cpp
-E:\szkolda\Sorting-Visualization\Main.cpp(33,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
   Sorts.cpp
 E:\szkolda\Sorting-Visualization\Animation.h(42,9): error C3646: "findColorForPillar": nieznany specyfikator przesłonięcia
 E:\szkolda\Sorting-Visualization\Animation.h(42,27): error C2059: błąd składniowy: „(”
 E:\szkolda\Sorting-Visualization\Animation.h(42,38): error C2238: nieoczekiwany(e) token(y) poprzedzający(e) ";"
 E:\szkolda\Sorting-Visualization\Sorts.cpp(137,27): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
 E:\szkolda\Sorting-Visualization\Sorts.cpp(153,17): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-  Generowanie kodu...
