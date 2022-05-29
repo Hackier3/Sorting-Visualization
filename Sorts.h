@@ -14,5 +14,6 @@ class Sorts
 		void bubble_sort(vector<pair<int, int>>&);
 		void printData(vector<int>&);
 
+	private:
 		int counter = 0;
 };

@@ -11,7 +11,7 @@
 using namespace std;
 
 // Funkcja wizualizujaca kolejne wartosci w tablicy
-void Animation::drawArray(vector<pair<int, int>>& arr)
+void Animation::drawArray(vector<pair<int, int>>arr)
 {
 	int frame = 0;
 	const int frameWidth = 2;
@@ -21,14 +21,12 @@ void Animation::drawArray(vector<pair<int, int>>& arr)
 		i < numberOfPillars;
 		i++, frame += frameWidth)
 	{
-		// Color color = findColorForPillar(arr[i].second);
+		Color color = findColorForPillar(arr[i].second);
 
 		// Podaje ( { wspX skad mam zaczynac rysowac, wspY skad mam zaczac rysowac }, { podaje szerokosc slupka, a tu wysokosc }, { kolor } )
 		DrawRectangleV(Vector2{ (float)i * BarWidth + frame, (float)GetScreenHeight() - arr[i].first },
 			Vector2{ BarWidth, (float)arr[i].first },
-			// color,
-			BLUE
-		);
+			color);
 	}
 }
 
@@ -43,7 +41,7 @@ void Animation::randomizeArray(vector<pair<int, int>>& arr)
 // Funkcja pokazujaca ekran startowy	
 void Animation::showMenuScreen()
 {
-#define col GREEN
+#define HEADER GREEN
 	Font fontRegular = LoadFont("");
 	int posY = 80;
 	int fontSize = 40;
@@ -51,7 +49,7 @@ void Animation::showMenuScreen()
 
 	// Tekst g³owny
 	int textWidth = MeasureTextEx(fontRegular, headerName, fontSize, fontSize / 10).x;
-	DrawText(headerName, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
+	DrawText(headerName, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
 	fontSize = 25;
 	posY += 170;
 
@@ -61,11 +59,11 @@ void Animation::showMenuScreen()
 		textWidth = MeasureTextEx(fontRegular, algorithmsNames[i], fontSize, fontSize / 10).x;
 
 		if (i % 3 == 0)
-			DrawText(algorithmsNames[i], GetScreenWidth() / 5 - textWidth / 2, posY, fontSize, col);
+			DrawText(algorithmsNames[i], GetScreenWidth() / 5 - textWidth / 2, posY, fontSize, HEADER);
 		else if (i % 3 == 1)
-			DrawText(algorithmsNames[i], GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
+			DrawText(algorithmsNames[i], GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
 		else if (i % 3 == 2) {
-			DrawText(algorithmsNames[i], GetScreenWidth() - GetScreenWidth() / 5 - textWidth / 2, posY, fontSize, col);
+			DrawText(algorithmsNames[i], GetScreenWidth() - GetScreenWidth() / 5 - textWidth / 2, posY, fontSize, HEADER);
 			posY += 140;
 		}
 	}
@@ -73,29 +71,29 @@ void Animation::showMenuScreen()
 	/////////////////////////////////////
 	const char* fontName9 = "Costam sort";
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
-	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, col);
+	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
 
 	isNumberPressed();
 }
 
 // Funkcja aktualizujaca kolory pilarow
-//Color Animation::findColorForPillar(int pillarState)
-//{
-//	switch (pillarState)
-//	{
-//	case SELECTED:
-//		return LIGHTGRAY;
-//		break;
-//
-//	case SORTED:
-//		return GREEN;
-//		break;
-//
-//	default:
-//		return MAGENTA;
-//		break;
-//	}
-//}
+Color Animation::findColorForPillar(int pillarState)
+{
+	switch (pillarState)
+	{
+		case SELECTED:
+			return LIGHTGRAY;
+			break;
+
+		case SORTED:
+			return GREEN;
+			break;
+
+		default:
+			return MAGENTA;
+			break;
+	}
+}
 
 void Animation::isNumberPressed()
 {
@@ -128,7 +126,8 @@ void Animation::isNumberPressed()
 	}
 }
 
-void Animation::displayAnimation(vector<pair<int, int>>& vec){
+void Animation::displayAnimation(vector<pair<int, int>>vec)
+{
 		BeginDrawing();
 		ClearBackground(BLACK);
 		drawArray(vec);

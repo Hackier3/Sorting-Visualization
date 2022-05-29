@@ -31,14 +31,13 @@ class Animation
 											"Costam sort",
 											"Costam sort",
 											"Costam sort" };
-
-		//void sortArray();
-		void drawArray(vector<pair<int, int>>&);
+		
+		// FUNKCJE
+		void drawArray(vector<pair<int, int>>);
 		void randomizeArray(vector<pair<int, int>>&);
 		void showMenuScreen();
 		void isNumberPressed();
-		void displayAnimation(vector<pair<int, int>>&);
+		void displayAnimation(vector<pair<int, int>>);
 
-		// Color findColorForPillar(int pillarState);
-
+		Color findColorForPillar(const int);
 };
