@@ -110,15 +110,21 @@ void Animation::isNumberPressed()
 				o.bubble_sort(arr);
 				break;
 			case 49:
-				cout << "1";
-				system("pause");
+				o.select_sort(arr);
 				break;
 			case 50:
-				cout << "2";
-				system("pause");
+				o.insertion_sort(arr);
+				break;
+			case 51:
+				o.counting_sort(arr);
+				break;
+			case 52:
+				o.merge_sort(arr, 0 , numberOfPillars - 1);
 				break;
 		}
 		isRandomizeArray = !isRandomizeArray;
+		//isShowMenuScreen = !isShowMenuScreen;
+		BeginDrawing();
 	}
 }
 

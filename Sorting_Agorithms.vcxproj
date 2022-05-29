@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="C:\Users\bulba\OneDrive\Pulpit\usunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\raylib.h" />
     <ClInclude Include="Sorts.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

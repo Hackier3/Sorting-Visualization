@@ -2,12 +2,16 @@
 #include "Sorts.h"
 #include "Animation.h"
 #include <raylib.h>
+#include <chrono>
+#include <thread>
 
 using namespace std;
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
 
 Animation o;
 
-void Sorts::merge_sort(vector <int>& vec, int left, int right)
+void Sorts::merge_sort(vector<pair<int, int>>& vec, int left, int right)
 {
 	if (left != right)
 	{
@@ -18,22 +22,22 @@ void Sorts::merge_sort(vector <int>& vec, int left, int right)
 	}
 }
 
-void Sorts::merge(vector <int>& vec, int left, int mid, int right)
+void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
 {
 	// Deklaruje rozmiar ka¿dego z podvectorow
 	int sizeL = mid - left + 1;
 	int sizeR = right - mid;
 
 	// Deklaruje vectory pomocniecze dla lewej oraz prawej strony
-	vector <int> vecL(sizeL);
-	vector <int> vecP(sizeR);
+	vector<int> vecL(sizeL);
+	vector<int> vecP(sizeR);
 
 	// Przypisuje wartosc vectorom pomocniczym
 	for (int i = 0; i < sizeL; i++)
-		vecL.at(i) = vec.at(i + left);
+		vecL.at(i) = vec.at(i + left).first;
 
 	for (int i = 0; i < sizeR; i++)
-		vecP.at(i) = vec.at(i + mid + 1);
+		vecP.at(i) = vec.at(i + mid + 1).first;
 
 	// Deklaruje wskazniki do pomocniczych tablic, aby moc porownywac w nich elementy
 	int indicatorL = 0;
@@ -44,31 +48,34 @@ void Sorts::merge(vector <int>& vec, int left, int mid, int right)
 	for (indexVec = left; indicatorL < sizeL && indicatorR < sizeR; indexVec++)
 	{
 		if (vecL[indicatorL] <= vecP[indicatorR])
-			vec[indexVec] = vecL[indicatorL++];
+			vec[indexVec].first = vecL[indicatorL++];
 		else
-			vec[indexVec] = vecP[indicatorR++];
+			vec[indexVec].first = vecP[indicatorR++];
+		o.displayAnimation(vec);
 	}
 
 	// Przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
 	while (indicatorL < sizeL)
-		vec[indexVec++] = vecL[indicatorL++];
+		vec[indexVec++].first = vecL[indicatorL++];
 
 	while (indicatorR < sizeR)
-		vec[indexVec++] = vecP[indicatorR++];
+		vec[indexVec++].first = vecP[indicatorR++];
+
+	o.displayAnimation(vec);
 }
 
-void Sorts::counting_sort(vector <int>& vec)
+void Sorts::counting_sort(vector<pair<int, int>>& vec)
 {
-	int theBiggest = vec.at(0);
-	int theSmallest = vec.at(0);
+	int theBiggest = vec.at(0).first;
+	int theSmallest = vec.at(0).first;
 
 	// Szukam najmniejszej oraz najwiekszej liczby ze zbioru liczb do posortowania
 	for (int i = 0; i < vec.size(); i++)
 	{
-		if (vec.at(i) > theBiggest)
-			theBiggest = vec.at(i);
-		if (vec.at(i) < theSmallest)
-			theSmallest = vec.at(i);
+		if (vec.at(i).first > theBiggest)
+			theBiggest = vec.at(i).first;
+		if (vec.at(i).first < theSmallest)
+			theSmallest = vec.at(i).first;
 	}
 
 	vector <int> howManyNumbs(theBiggest + 1);
@@ -79,26 +86,34 @@ void Sorts::counting_sort(vector <int>& vec)
 
 	// Zliczam iloœæ wyst¹pieñ kolejnych liczby
 	for (int i = 0; i < vec.size(); i++)
-		howManyNumbs.at(vec.at(i))++;
+		howManyNumbs.at(vec.at(i).first)++;
 
 	for (int i = theSmallest; i <= theBiggest; i++)
-		for (static int counter = 0;
-			howManyNumbs.at(i) > 0;
-			howManyNumbs.at(i)--, counter++)
-			vec.at(counter) = i;
+		while(howManyNumbs.at(i) > 0)
+		{
+			vec.at(counter).first = i;
+			o.displayAnimation(vec);
+
+			howManyNumbs.at(i)--; 
+			counter++;
+		}
+	counter = 0;
 }
 
-void Sorts::insertion_sort(vector <int>& vec)
+void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 {
 	for (int i = 1; i < vec.size(); i++)
 		for (int j = i - 1, k = i;
 			j >= 0;
 			j--, k--)
 			if (vec.at(k) < vec.at(j))
+			{
 				swap(vec.at(k), vec.at(j));
+				o.displayAnimation(vec);
+			}
 }
 
-void Sorts::select_sort(vector <int>& vec)
+void Sorts::select_sort(vector<pair<int, int>>& vec)
 {
 	for (int i = 0; i < vec.size(); i++)
 	{
@@ -109,7 +124,10 @@ void Sorts::select_sort(vector <int>& vec)
 				indexMin = j;
 
 		if (vec.at(i) != vec.at(indexMin))
+		{
 			swap(vec.at(i), vec.at(indexMin));
+			o.displayAnimation(vec);
+		}
 	}
 }
 
@@ -135,7 +153,7 @@ void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 		i = vec.size();
 }
 
-void Sorts::printData(vector <int> vec)
+void Sorts::printData(vector<int>& vec)
 {
 	for (auto elem : vec) {
 		cout << elem << " ";

@@ -32,5 +32,8 @@
     <ClInclude Include="Animation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\bulba\OneDrive\Pulpit\usunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\raylib.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
