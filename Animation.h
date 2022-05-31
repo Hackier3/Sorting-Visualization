@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <raylib.h>
+#define HEADER GREEN
 
 using namespace std;
 
@@ -20,7 +22,7 @@ public:
 	const int FPS = 120;
 	const int numberOfPillars = 100;
 
-	vector<pair<int, int>> arr = vector<pair<int, int>>(numberOfPillars);
+	vector<pair<int, int>> vec = vector<pair<int, int>>(numberOfPillars);
 	const char* algorithmsNames[10] = { "Bubble sort",
 										"Select sort",
 										"Insertion sort",
@@ -38,6 +40,7 @@ public:
 	void showMenuScreen();
 	void isNumberPressed();
 	void displayAnimation(vector<pair<int, int>>);
+	void finalAnimation(vector<pair<int, int>>);
 
-	Color findColorForPillar(const int);
+	Color findColorForPillar(int);
 };

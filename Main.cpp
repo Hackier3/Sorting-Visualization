@@ -17,10 +17,10 @@ int main()
 	while (!WindowShouldClose())
 	{
 		if (o.isRandomizeArray)
-			o.randomizeArray(o.arr);
+			o.randomizeArray(o.vec);
 
 		BeginDrawing();
-		ClearBackground(BLACK);
+		ClearBackground(BACKGROUND);
 
 		if (o.isShowMenuScreen)
 			o.showMenuScreen();

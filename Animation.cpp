@@ -1,17 +1,11 @@
 #include <iostream>
-#include <raylib.h>
 #include "Animation.h"
 #include "Sorts.h"
-
-// Pillar colors
-#define NORMAL 0
-#define SORTED 1
-#define SELECTED 2
 
 using namespace std;
 
 // Funkcja wizualizujaca kolejne wartosci w tablicy
-void Animation::drawArray(vector<pair<int, int>>arr)
+void Animation::drawArray(vector<pair<int, int>>vec)
 {
 	int frame = 0;
 	const int frameWidth = 2;
@@ -21,27 +15,26 @@ void Animation::drawArray(vector<pair<int, int>>arr)
 		i < numberOfPillars;
 		i++, frame += frameWidth)
 	{
-		Color color = findColorForPillar(arr[i].second);
+		Color color = findColorForPillar(vec[i].second);
 
 		// Podaje ( { wspX skad mam zaczynac rysowac, wspY skad mam zaczac rysowac }, { podaje szerokosc slupka, a tu wysokosc }, { kolor } )
-		DrawRectangleV(Vector2{ (float)i * BarWidth + frame, (float)GetScreenHeight() - arr[i].first },
-			Vector2{ BarWidth, (float)arr[i].first },
+		DrawRectangleV(Vector2{ (float)i * BarWidth + frame, (float)GetScreenHeight() - vec[i].first },
+			Vector2{ BarWidth, (float)vec[i].first },
 			color);
 	}
 }
 
 // Funkcja przypisuj¹ca liczbom w wektorze losowe wartosci
-void Animation::randomizeArray(vector<pair<int, int>>& arr)
+void Animation::randomizeArray(vector<pair<int, int>>& vec)
 {
 	for (int i = 0; i < numberOfPillars; i++)
-		arr[i] = { GetRandomValue(10, minWindowHeight), NORMAL };
+		vec[i] = { GetRandomValue(10, minWindowHeight), NORMAL };
 	isRandomizeArray = false;
 }
 
 // Funkcja pokazujaca ekran startowy	
 void Animation::showMenuScreen()
 {
-#define HEADER GREEN
 	Font fontRegular = LoadFont("");
 	int posY = 80;
 	int fontSize = 40;
@@ -77,12 +70,12 @@ void Animation::showMenuScreen()
 }
 
 // Funkcja aktualizujaca kolory pilarow
-Color Animation::findColorForPillar(int pillarState)
+Color  Animation::findColorForPillar(int pillarState)
 {
 	switch (pillarState)
 	{
 	case SELECTED:
-		return LIGHTGRAY;
+		return RED;
 		break;
 
 	case SORTED:
@@ -90,7 +83,7 @@ Color Animation::findColorForPillar(int pillarState)
 		break;
 
 	default:
-		return MAGENTA;
+		return BLUE;
 		break;
 	}
 }
@@ -105,21 +98,22 @@ void Animation::isNumberPressed()
 		switch (key)
 		{
 		case 48:
-			o.bubble_sort(arr);
+			o.bubble_sort(vec);
 			break;
 		case 49:
-			o.select_sort(arr);
+			o.select_sort(vec);
 			break;
 		case 50:
-			o.insertion_sort(arr);
+			o.insertion_sort(vec);
 			break;
 		case 51:
-			o.counting_sort(arr);
+			o.counting_sort(vec);
 			break;
 		case 52:
-			o.merge_sort(arr, 0, numberOfPillars - 1);
+			o.merge_sort(vec, 0, numberOfPillars - 1);
 			break;
 		}
+
 		isRandomizeArray = !isRandomizeArray;
 		//isShowMenuScreen = !isShowMenuScreen;
 		BeginDrawing();
@@ -129,7 +123,23 @@ void Animation::isNumberPressed()
 void Animation::displayAnimation(vector<pair<int, int>>vec)
 {
 	BeginDrawing();
-	ClearBackground(BLACK);
+	ClearBackground(BACKGROUND);
 	drawArray(vec);
 	EndDrawing();
+}
+
+void Animation::finalAnimation(vector<pair<int, int>>vec)
+{
+	int key = 0;
+
+	for (int i = 0; i < numberOfPillars; i++)
+	{
+		vec[i].second = SORTED;
+		displayAnimation(vec);
+	}
+
+	//while(key != KEY_ESCAPE) {
+	//	key = GetKeyPressed();
+	//	printf(key + "\n");
+	//}
 }

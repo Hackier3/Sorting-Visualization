@@ -1,6 +1,13 @@
 #pragma once
 #include <vector>
 
+#define BACKGROUND BLACK
+
+// Pillar colors
+#define NORMAL 0
+#define SORTED 1
+#define SELECTED 2
+
 using namespace std;
 
 class Sorts

@@ -2,12 +2,8 @@
 #include "Sorts.h"
 #include "Animation.h"
 #include <raylib.h>
-#include <chrono>
-#include <thread>
 
 using namespace std;
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
 
 Animation o;
 
@@ -20,6 +16,9 @@ void Sorts::merge_sort(vector<pair<int, int>>& vec, int left, int right)
 		merge_sort(vec, mid + 1, right);
 		merge(vec, left, mid, right);
 	}
+	
+	if(right == o.numberOfPillars - 1 && left == 0)
+		o.finalAnimation(vec);
 }
 
 void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
@@ -97,7 +96,9 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 			howManyNumbs.at(i)--;
 			counter++;
 		}
+
 	counter = 0;
+	o.finalAnimation(vec);
 }
 
 void Sorts::insertion_sort(vector<pair<int, int>>& vec)
@@ -111,6 +112,8 @@ void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 				swap(vec.at(k), vec.at(j));
 				o.displayAnimation(vec);
 			}
+
+	o.finalAnimation(vec);
 }
 
 void Sorts::select_sort(vector<pair<int, int>>& vec)
@@ -129,6 +132,8 @@ void Sorts::select_sort(vector<pair<int, int>>& vec)
 			o.displayAnimation(vec);
 		}
 	}
+
+	o.finalAnimation(vec);
 }
 
 //REKURENCYJNIE
@@ -137,11 +142,15 @@ void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 	static int i = vec.size();
 
 	for (int j = 0; j < i - 1; j++)
+	{
 		if (vec.at(j) > vec.at(j + 1))
 		{
-			swap(vec.at(j), vec.at(j + 1));
+			vec.at(j).second = SELECTED;
 			o.displayAnimation(vec);
+			vec.at(j).second = NORMAL;
+			swap(vec.at(j), vec.at(j + 1));
 		}
+	}
 
 	if (i != 1)
 	{
@@ -150,7 +159,10 @@ void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 	}
 
 	if (i != vec.size())
+	{
 		i = vec.size();
+		o.finalAnimation(vec);
+	}
 }
 
 void Sorts::printData(vector<int>& vec)
