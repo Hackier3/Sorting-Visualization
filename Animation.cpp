@@ -15,7 +15,7 @@ void Animation::drawArray(vector<pair<int, int>>vec)
 		i < numberOfPillars;
 		i++, frame += frameWidth)
 	{
-		Color color = findColorForPillar(vec[i].second);
+		Color color = findColor(vec[i].second);
 
 		// Podaje ( { wspX skad mam zaczynac rysowac, wspY skad mam zaczac rysowac }, { podaje szerokosc slupka, a tu wysokosc }, { kolor } )
 		DrawRectangleV(Vector2{ (float)i * BarWidth + frame, (float)GetScreenHeight() - vec[i].first },
@@ -29,7 +29,6 @@ void Animation::randomizeArray(vector<pair<int, int>>& vec)
 {
 	for (int i = 0; i < numberOfPillars; i++)
 		vec[i] = { GetRandomValue(10, minWindowHeight), NORMAL };
-	isRandomizeArray = false;
 }
 
 // Funkcja pokazujaca ekran startowy	
@@ -62,33 +61,12 @@ void Animation::showMenuScreen()
 	}
 
 	/////////////////////////////////////
-	const char* fontName9 = "Costam sort";
+	const char* fontName9 = "Work in progress";
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
 	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
-
-	isNumberPressed();
 }
 
-// Funkcja aktualizujaca kolory pilarow
-Color  Animation::findColorForPillar(int pillarState)
-{
-	switch (pillarState)
-	{
-	case SELECTED:
-		return RED;
-		break;
-
-	case SORTED:
-		return GREEN;
-		break;
-
-	default:
-		return BLUE;
-		break;
-	}
-}
-
-void Animation::isNumberPressed()
+void Animation::checkAlgorithm()
 {
 	int key = GetCharPressed();
 
@@ -113,10 +91,8 @@ void Animation::isNumberPressed()
 			o.merge_sort(vec, 0, numberOfPillars - 1);
 			break;
 		}
-
-		isRandomizeArray = !isRandomizeArray;
-		//isShowMenuScreen = !isShowMenuScreen;
-		BeginDrawing();
+		isShowMenuScreen = false;
+		isExitMenuOpen = true;
 	}
 }
 
@@ -128,7 +104,7 @@ void Animation::displayAnimation(vector<pair<int, int>>vec)
 	EndDrawing();
 }
 
-void Animation::finalAnimation(vector<pair<int, int>>vec)
+void Animation::finalAnimation(vector<pair<int, int>>&vec)
 {
 	int key = 0;
 
@@ -137,9 +113,49 @@ void Animation::finalAnimation(vector<pair<int, int>>vec)
 		vec[i].second = SORTED;
 		displayAnimation(vec);
 	}
+}
 
-	//while(key != KEY_ESCAPE) {
-	//	key = GetKeyPressed();
-	//	printf(key + "\n");
-	//}
+void Animation::exitMenu(vector<pair<int, int>>vec)
+{
+	int key = GetKeyPressed();
+
+	if(key == KEY_Q)		//key 3
+	{
+		isExitMenuOpen = false;
+		isRandomizeArray = true;
+	}
+	else
+	{
+		// WYSWIETL: "PRESS Q TO RETURN TO THE MENU"
+		const char* exitText = "Press q to return to the menu";
+		Color color = findColor(EXITTEXT);
+		Font fontRegular = LoadFont("");
+		int posY = 80;
+		int fontSize = 40;
+		int textWidth = MeasureTextEx(fontRegular, exitText, fontSize, fontSize / 10).x;
+		DrawText(exitText, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, color);
+	}
+}
+
+// Funkcja aktualizujaca kolory pilarow
+Color  Animation::findColor(int pillarState)
+{
+	switch (pillarState)
+	{
+	case SELECTED:
+		return RED;
+		break;
+
+	case SORTED:
+		return GREEN;
+		break;
+
+	case EXITTEXT:
+		return MAROON;
+		break;
+
+	default:
+		return BLUE;
+		break;
+	}
 }

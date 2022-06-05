@@ -50,7 +50,9 @@ void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
 			vec[indexVec].first = vecL[indicatorL++];
 		else
 			vec[indexVec].first = vecP[indicatorR++];
+		vec.at(indexVec).second = SELECTED;
 		o.displayAnimation(vec);
+		vec.at(indexVec).second = NORMAL;
 	}
 
 	// Przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
@@ -60,7 +62,9 @@ void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
 	while (indicatorR < sizeR)
 		vec[indexVec++].first = vecP[indicatorR++];
 
-	o.displayAnimation(vec);
+	//vec.at(i).second = SELECTED;
+	//o.displayAnimation(vec);
+	//vec.at(i).second = NORMAL;
 }
 
 void Sorts::counting_sort(vector<pair<int, int>>& vec)
@@ -91,7 +95,9 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 		while (howManyNumbs.at(i) > 0)
 		{
 			vec.at(counter).first = i;
+			vec.at(counter).second = SELECTED;
 			o.displayAnimation(vec);
+			vec.at(counter).second = NORMAL;
 
 			howManyNumbs.at(i)--;
 			counter++;
@@ -110,7 +116,9 @@ void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 			if (vec.at(k) < vec.at(j))
 			{
 				swap(vec.at(k), vec.at(j));
+				vec.at(i).second = SELECTED;
 				o.displayAnimation(vec);
+				vec.at(i).second = NORMAL;
 			}
 
 	o.finalAnimation(vec);
@@ -129,7 +137,9 @@ void Sorts::select_sort(vector<pair<int, int>>& vec)
 		if (vec.at(i) != vec.at(indexMin))
 		{
 			swap(vec.at(i), vec.at(indexMin));
+			vec.at(i).second = SELECTED;
 			o.displayAnimation(vec);
+			vec.at(i).second = NORMAL;
 		}
 	}
 

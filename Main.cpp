@@ -3,7 +3,6 @@
 #include <raylib.h>
 #include "Sorts.h"
 #include "Animation.h"
-#include <string>
 
 using namespace std;
 
@@ -16,17 +15,27 @@ int main()
 
 	while (!WindowShouldClose())
 	{
-		if (o.isRandomizeArray)
-			o.randomizeArray(o.vec);
-
 		BeginDrawing();
 		ClearBackground(BACKGROUND);
+		
+		if (o.isRandomizeArray)
+		{
+			o.randomizeArray(o.vec);
+			o.isRandomizeArray = false;
+			o.isShowMenuScreen = true;
+		}
 
-		if (o.isShowMenuScreen)
+		else if (o.isShowMenuScreen)
+		{
 			o.showMenuScreen();
+			o.checkAlgorithm();
+		}
 
-		if (!o.isShowMenuScreen)
-			o.isNumberPressed();
+		else if (o.isExitMenuOpen)
+		{ 
+			o.exitMenu(o.vec);
+			o.drawArray(o.vec);
+		}
 
 		EndDrawing();
 	}

@@ -1,18 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
-  Animation.cpp
-E:\szkolda\Sorting-Visualization\Animation.cpp(44,76): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(44,57): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(44,16): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(52,81): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(52,62): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(52,86): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(66,71): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(66,52): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Animation.cpp(66,76): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
   Main.cpp
-E:\szkolda\Sorting-Visualization\Main.cpp(33,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
-  Sorts.cpp
-E:\szkolda\Sorting-Visualization\Sorts.cpp(142,27): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Sorts.cpp(163,17): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-  Generowanie kodu...
+E:\szkolda\Sorting-Visualization\Main.cpp(42,2): warning C4551: wywołaniu funkcji brakuje listy argumentów
   Sorting_Agorithms.vcxproj -> E:\szkolda\Sorting-Visualization\x64\Debug\SortVisualizer.exe

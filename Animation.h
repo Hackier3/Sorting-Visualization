@@ -17,6 +17,7 @@ public:
 	// Specyfikacje boolowskie
 	bool isRandomizeArray = true;
 	bool isShowMenuScreen = true;
+	bool isExitMenuOpen = false;
 
 	// Pozosta³e specyfikacje
 	const int FPS = 120;
@@ -28,19 +29,20 @@ public:
 										"Insertion sort",
 										"Counting sort",
 										"Merge sort",
-										"Costam sort",
-										"Costam sort",
-										"Costam sort",
-										"Costam sort",
-										"Costam sort" };
+										"Work in progress",
+										"Work in progress",
+										"Work in progress",
+										"Work in progress",
+										"Work in progress" };
 
 	// FUNKCJE
 	void drawArray(vector<pair<int, int>>);
 	void randomizeArray(vector<pair<int, int>>&);
 	void showMenuScreen();
-	void isNumberPressed();
+	void checkAlgorithm();
 	void displayAnimation(vector<pair<int, int>>);
-	void finalAnimation(vector<pair<int, int>>);
+	void finalAnimation(vector<pair<int, int>>&);
+	void exitMenu(vector<pair<int, int>>vec);
 
-	Color findColorForPillar(int);
+	Color findColor(int);
 };

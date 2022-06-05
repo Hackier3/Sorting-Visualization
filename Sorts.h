@@ -7,6 +7,7 @@
 #define NORMAL 0
 #define SORTED 1
 #define SELECTED 2
+#define EXITTEXT 3
 
 using namespace std;
 
