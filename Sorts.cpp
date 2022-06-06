@@ -16,8 +16,8 @@ void Sorts::merge_sort(vector<pair<int, int>>& vec, int left, int right)
 		merge_sort(vec, mid + 1, right);
 		merge(vec, left, mid, right);
 	}
-	
-	if(right == o.numberOfPillars - 1 && left == 0)
+
+	if (right == o.numberOfPillars - 1 && left == 0)
 		o.finalAnimation(vec);
 }
 
@@ -43,16 +43,15 @@ void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
 	int indicatorR = 0;
 	int indexVec;
 
-	// Porownuje elementy z pomocniczych vetorow, aby pomosrtowac glowny vector
+	// Porownuje elementy z pomocniczych vetorow, aby posortowac glowny vector
 	for (indexVec = left; indicatorL < sizeL && indicatorR < sizeR; indexVec++)
 	{
 		if (vecL[indicatorL] <= vecP[indicatorR])
 			vec[indexVec].first = vecL[indicatorL++];
 		else
 			vec[indexVec].first = vecP[indicatorR++];
-		vec.at(indexVec).second = SELECTED;
-		o.displayAnimation(vec);
-		vec.at(indexVec).second = NORMAL;
+
+		o.multipleColorAnimation(vec, 100, indexVec, left, right);
 	}
 
 	// Przepisuje elementy do glownego vectora z niewykorzystanego vectora pomocniczego
@@ -61,10 +60,6 @@ void Sorts::merge(vector<pair<int, int>>& vec, int left, int mid, int right)
 
 	while (indicatorR < sizeR)
 		vec[indexVec++].first = vecP[indicatorR++];
-
-	//vec.at(i).second = SELECTED;
-	//o.displayAnimation(vec);
-	//vec.at(i).second = NORMAL;
 }
 
 void Sorts::counting_sort(vector<pair<int, int>>& vec)
@@ -95,9 +90,7 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 		while (howManyNumbs.at(i) > 0)
 		{
 			vec.at(counter).first = i;
-			vec.at(counter).second = SELECTED;
-			o.displayAnimation(vec);
-			vec.at(counter).second = NORMAL;
+			o.multipleColorAnimation(vec, 100, counter);
 
 			howManyNumbs.at(i)--;
 			counter++;
@@ -110,16 +103,17 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 {
 	for (int i = 1; i < vec.size(); i++)
+	{
 		for (int j = i - 1, k = i;
 			j >= 0;
 			j--, k--)
+		{
 			if (vec.at(k) < vec.at(j))
-			{
 				swap(vec.at(k), vec.at(j));
-				vec.at(i).second = SELECTED;
-				o.displayAnimation(vec);
-				vec.at(i).second = NORMAL;
-			}
+
+			o.multipleColorAnimation(vec, 38, i, k, j);
+		}
+	}
 
 	o.finalAnimation(vec);
 }
@@ -135,12 +129,9 @@ void Sorts::select_sort(vector<pair<int, int>>& vec)
 				indexMin = j;
 
 		if (vec.at(i) != vec.at(indexMin))
-		{
 			swap(vec.at(i), vec.at(indexMin));
-			vec.at(i).second = SELECTED;
-			o.displayAnimation(vec);
-			vec.at(i).second = NORMAL;
-		}
+
+		o.multipleColorAnimation(vec, 100, i, indexMin);
 	}
 
 	o.finalAnimation(vec);
@@ -154,12 +145,9 @@ void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 	for (int j = 0; j < i - 1; j++)
 	{
 		if (vec.at(j) > vec.at(j + 1))
-		{
-			vec.at(j).second = SELECTED;
-			o.displayAnimation(vec);
-			vec.at(j).second = NORMAL;
 			swap(vec.at(j), vec.at(j + 1));
-		}
+
+		o.multipleColorAnimation(vec, 30, j + 1, j);
 	}
 
 	if (i != 1)

@@ -38,10 +38,12 @@ void Animation::showMenuScreen()
 	int posY = 80;
 	int fontSize = 40;
 	const char* headerName = "Select a sorting algorithm: type 0-9";
+	const char* fontName9 = "Work in progress";
 
 	// Tekst g³owny
 	int textWidth = MeasureTextEx(fontRegular, headerName, fontSize, fontSize / 10).x;
 	DrawText(headerName, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
+
 	fontSize = 25;
 	posY += 170;
 
@@ -61,7 +63,6 @@ void Animation::showMenuScreen()
 	}
 
 	/////////////////////////////////////
-	const char* fontName9 = "Work in progress";
 	textWidth = MeasureTextEx(fontRegular, fontName9, fontSize, fontSize / 10).x;
 	DrawText(fontName9, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, HEADER);
 }
@@ -104,7 +105,7 @@ void Animation::displayAnimation(vector<pair<int, int>>vec)
 	EndDrawing();
 }
 
-void Animation::finalAnimation(vector<pair<int, int>>&vec)
+void Animation::finalAnimation(vector<pair<int, int>>& vec)
 {
 	int key = 0;
 
@@ -119,7 +120,7 @@ void Animation::exitMenu(vector<pair<int, int>>vec)
 {
 	int key = GetKeyPressed();
 
-	if(key == KEY_Q)		//key 3
+	if (key == KEY_Q)		//key 3
 	{
 		isExitMenuOpen = false;
 		isRandomizeArray = true;
@@ -127,14 +128,35 @@ void Animation::exitMenu(vector<pair<int, int>>vec)
 	else
 	{
 		// WYSWIETL: "PRESS Q TO RETURN TO THE MENU"
-		const char* exitText = "Press q to return to the menu";
-		Color color = findColor(EXITTEXT);
 		Font fontRegular = LoadFont("");
-		int posY = 80;
+		const char* exitText = "Press q to return to the menu";
 		int fontSize = 40;
+		int posY = 80;
+		Color color = findColor(EXITTEXT);
+
 		int textWidth = MeasureTextEx(fontRegular, exitText, fontSize, fontSize / 10).x;
 		DrawText(exitText, GetScreenWidth() / 2 - textWidth / 2, posY, fontSize, color);
 	}
+}
+
+void Animation::sleep(int waitTime)
+{
+	std::chrono::milliseconds timespan(waitTime);
+	std::this_thread::sleep_for(timespan);
+}
+
+void Animation::multipleColorAnimation(vector<pair<int, int>> myVec, int sleepValue, int index1, int index2, int index3)
+{
+	myVec.at(index1).second = SELECTED;
+	if (index2 >= 0)
+	{ 
+		myVec.at(index2).second = SWAP;
+		if (index3 >= 0)
+			myVec.at(index3).second = SWAP2;
+	}
+
+	displayAnimation(myVec);
+	sleep(sleepValue);
 }
 
 // Funkcja aktualizujaca kolory pilarow
@@ -152,6 +174,14 @@ Color  Animation::findColor(int pillarState)
 
 	case EXITTEXT:
 		return MAROON;
+		break;
+
+	case SWAP:
+		return GOLD;
+		break;
+
+	case SWAP2:
+		return LIME;
 		break;
 
 	default:

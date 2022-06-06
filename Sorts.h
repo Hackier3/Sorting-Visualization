@@ -8,6 +8,8 @@
 #define SORTED 1
 #define SELECTED 2
 #define EXITTEXT 3
+#define SWAP 4
+#define SWAP2 5
 
 using namespace std;
 

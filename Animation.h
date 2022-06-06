@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <raylib.h>
+#include <chrono>
+#include <thread>
 #define HEADER GREEN
 
 using namespace std;
@@ -43,6 +45,8 @@ public:
 	void displayAnimation(vector<pair<int, int>>);
 	void finalAnimation(vector<pair<int, int>>&);
 	void exitMenu(vector<pair<int, int>>vec);
+	void sleep(int);
+	void multipleColorAnimation(vector<pair<int, int>>, int sleepValue, int index1, int index2 = -1, int index3 = -1);	//ile kolorow, index1, index2, index3, index4
 
 	Color findColor(int);
 };
