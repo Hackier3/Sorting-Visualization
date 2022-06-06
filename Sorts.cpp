@@ -102,6 +102,8 @@ void Sorts::counting_sort(vector<pair<int, int>>& vec)
 
 void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 {
+	int indicator = 0;
+
 	for (int i = 1; i < vec.size(); i++)
 	{
 		for (int j = i - 1, k = i;
@@ -110,8 +112,10 @@ void Sorts::insertion_sort(vector<pair<int, int>>& vec)
 		{
 			if (vec.at(k) < vec.at(j))
 				swap(vec.at(k), vec.at(j));
+			else
+				indicator = j;
 
-			o.multipleColorAnimation(vec, 38, i, k, j);
+			o.multipleColorAnimation(vec, 20, i, k, indicator);
 		}
 	}
 
@@ -141,13 +145,16 @@ void Sorts::select_sort(vector<pair<int, int>>& vec)
 void Sorts::bubble_sort(vector<pair<int, int>>& vec)
 {
 	static int i = vec.size();
+	int k = 0;
 
 	for (int j = 0; j < i - 1; j++)
 	{
 		if (vec.at(j) > vec.at(j + 1))
 			swap(vec.at(j), vec.at(j + 1));
+		else	
+			k = j;
 
-		o.multipleColorAnimation(vec, 30, j + 1, j);
+		o.multipleColorAnimation(vec, 13, j + 1, k);
 	}
 
 	if (i != 1)

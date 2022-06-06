@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (Sorting_Agorithms.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
   Sorts.cpp
-E:\szkolda\Sorting-Visualization\Sorts.cpp(143,27): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-E:\szkolda\Sorting-Visualization\Sorts.cpp(161,17): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Sorts.cpp(147,27): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+E:\szkolda\Sorting-Visualization\Sorts.cpp(168,17): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
   Sorting_Agorithms.vcxproj -> E:\szkolda\Sorting-Visualization\x64\Debug\SortVisualizer.exe
